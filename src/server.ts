@@ -1,10 +1,18 @@
 import fastify from 'fastify';
+import fastifyCors from '@fastify/cors';
 import { TextToSpeechClient } from '@google-cloud/text-to-speech';
 import { z } from 'zod';
 import dotenv from 'dotenv';
 
+
 dotenv.config();
 const app = fastify();
+
+app.register(fastifyCors, {
+  origin: '*',
+  methods: ['POST']
+});
+
 const client = new TextToSpeechClient();
 
 app.post("/textConverter", async (req, res) => {
