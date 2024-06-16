@@ -47,6 +47,10 @@ app.post("/textConverter", async (req, res) => {
   res.send(audio);
 });
 
+app.get("/health", async (req, res) => {
+  res.status(200).send("Servidor está operacional");
+});
+
 
 app.listen({
   host: '0.0.0.0',
